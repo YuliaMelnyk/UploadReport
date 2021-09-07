@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Report</title>
+    <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" th:action="@{/issuereport}" th:object="${issuereport}">
+            <h3>Upload report</h3>
+            <input type="text" placeholder="Email" id="email" th:field="*{email}"/>
+            <textarea placeholder="Description of the issue" rows="5" id="description" th:field="*{description}"></textarea>
+
+            	<input type="file" name="file">
+<!--             <input type="submit" value="Submit"/> -->
+        </form>
+        
+        <form method="post" th:action="@{/issues}" enctype="multipart/form-data">
+        	<div class="form-group">
+            
+            </div>
+            <button type="submit">Upload Report</button>
+        </form>
+
+        <div class="result_message" th:if="${submitted}">
+            <h3>Your report has been submitted.</h3>
+            <p>Find all issues <a href="/issues">here</a></p>
+        </div>
+    </div>
+</body>
+</html>
