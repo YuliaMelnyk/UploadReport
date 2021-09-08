@@ -6,6 +6,11 @@
 body{
     font-family: sans-serif;
 }
+
+h3{
+	text-align:center;
+	text-color:red;
+}
 .container {
     width: 100vw;
     height: 100vh;

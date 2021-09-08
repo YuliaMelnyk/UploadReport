@@ -1,0 +1,9 @@
+SUBSCRIPTION_ID;TRANSACTION_ID;PACKAGE_ID;AMOUNT;TIME_STAMP;EXTERNALTRANSID;TRANSACTION_TYPE
+   with  source_query  as
+*
+ERROR at line 1:
+ORA-03113: end-of-file on communication channel
+Process ID: 18285494
+Session ID: 1595 Serial number: 64489
+
+
