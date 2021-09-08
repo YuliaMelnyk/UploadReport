@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Upload Report</title>
+      <style>
 *{
     padding: 0;
     margin: 0;
@@ -9,7 +15,7 @@ body{
 
 h3{
 	text-align:center;
-	text-color:red;
+	color:red;
 }
 .container {
     width: 100vw;
@@ -70,5 +76,28 @@ h3{
     background: #eee;
 }
 .issue_list .status.done:after{
-    content: '✓';
+    content: 'âœ“';
 }
+</style>
+   </head>
+   
+   <body>
+      <th:block th:include="/_menu"></th:block>
+       
+      <h3>Upload Report:</h3>
+       
+      <!-- UploadForm -->
+       
+      <form th:object="${uploadForm}" method="POST"
+         action="" enctype="multipart/form-data">
+         Description:
+         <br>
+         <input th:field="*{description}" style="width:300px;"/>                
+         <br/><br/>  
+         Report to upload: <input th:field="*{fileDatas}" type="file"/>
+         <br />  
+         <input type="submit" value="Upload">
+      </form>
+       
+   </body>
+</html>
