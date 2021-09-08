@@ -14,6 +14,8 @@ public class Constants {
 
 	public static final String FILENAME_PREFIX = "VIBE";
 
-	public static final String DOMAIN_URL = "https://c2b.d1b.pw/sftp";
+	public static final String DOMAIN_URL = "https://localhost/dr";
+
+	public static final String DOMAIN_UNSUB = "https://localhost/unsub";
 
 }
