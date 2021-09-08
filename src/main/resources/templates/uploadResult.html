@@ -3,25 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Upload Result</title>
+<style>
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+	text-align:center;
+	margin:10px;
+}
+
+h3 {
+	text-align: center;
+	padding: 1em;
+}
+</style>
 <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-	<th:block th:include="/_menu"></th:block>
 
 	Description:
 	<span th:utext="${description}"></span>
 	<br />
-	<h3>Uploaded Reports:</h3>
+	<h3>Uploaded Report:</h3>
 
 	<ul th:each="file : ${uploadedFiles}">
 		<li th:utext="${file}"></li>
 	</ul>
 
-	<h3>Failed:</h3>
-	<ul th:each="file : ${failedFiles}">
-		<li style="color: red;" th:utext="${file}"></li>
-	</ul>
 
 </body>
 

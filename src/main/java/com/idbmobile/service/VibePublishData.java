@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.idbmobile.utils.Constants;
 import com.idbmobile.utils.HelperClass;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
@@ -21,11 +22,8 @@ public class VibePublishData extends PublishData {
 
 		File output = null;
 		try {
-
 			output = decompressFile(file);
-
 			final List<List<String>> records = getRecords(output);
-
 			sendTrxData(records);
 		} catch (Exception e) {
 			log.error("Error {}", e);
@@ -37,7 +35,16 @@ public class VibePublishData extends PublishData {
 
 	@Override
 	public void publishSubsInactiveData(File file) throws IOException, JSchException, SftpException {
-		// TODO Auto-generated method stub
+		File output = null;
+		try {
+			output = decompressFile(file);
+			final List<List<String>> records = getRecords(output);
+			sendSubsInactiveData(records, Constants.DOMAIN_UNSUB);
+		} catch (Exception e) {
+			log.error("Error {}", e);
+		} finally {
+			HelperClass.deleteFile(output);
+		}
 
 	}
 

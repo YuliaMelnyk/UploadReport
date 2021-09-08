@@ -61,9 +61,9 @@ public abstract class PublishData {
 			final String url = buildUrlSubsInactive(split, domain);
 			log.info("Build Inactive data parameters:   {}", url);
 
-			final String response = restTemplate.getForObject(url, String.class);
+			// final String response = restTemplate.getForObject(url, String.class);
 
-			log.info("Response Inactive data {}", response);
+			// log.info("Response Inactive data {}", response);
 
 		}
 	}
