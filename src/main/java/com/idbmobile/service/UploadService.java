@@ -22,7 +22,7 @@ public class UploadService {
 	@Autowired
 	private static VibePublishData vibePublishData;
 
-	// upload the file and return of this file
+	// upload the file and return Result
 
 	public static String doUpload(HttpServletRequest request, Model model, //
 			UploadForm uploadForm) {
@@ -30,7 +30,7 @@ public class UploadService {
 		String description = uploadForm.getDescription();
 		System.out.println("Description: " + description);
 
-		// Root Directory.;
+		// Root Directory
 		String uploadRootPath = System.getProperty("user.dir") + "/tmp";
 		System.out.println("uploadRootPath=" + uploadRootPath);
 
@@ -40,25 +40,24 @@ public class UploadService {
 			uploadRootDir.mkdirs();
 		}
 		MultipartFile[] fileDatas = uploadForm.getFileDatas();
-		//
-		List<File> uploadedFiles = new ArrayList<File>();
-		List<String> failedFiles = new ArrayList<String>();
+
+		List<File> uploadedFiles = new ArrayList<>();
+		List<String> failedFiles = new ArrayList<>();
 
 		for (MultipartFile fileData : fileDatas) {
 
-			// Client File Name
+			// User Report Name
 			String name = fileData.getOriginalFilename();
-			System.out.println("Client File Name = " + name);
+			System.out.println("User Report Name = " + name);
 
 			if (name != null && name.length() > 0) {
-				try {
-					// Create the file at server
-					File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + name);
+				// Create the file at server
+				File serverFile = new File(uploadRootDir.getAbsolutePath() + File.separator + name);
+				try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
 
-					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(fileData.getBytes());
 					stream.close();
-					//
+
 					uploadedFiles.add(serverFile);
 					System.out.println("Write file: " + serverFile);
 					if (name.contains(Constants.TRX_FILE) && name.endsWith(Constants.CSV_GZ)) {
